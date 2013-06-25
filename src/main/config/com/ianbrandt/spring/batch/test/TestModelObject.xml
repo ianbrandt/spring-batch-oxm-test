@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<binding>
+	<mapping name="test" class="com.ianbrandt.spring.batch.test.TestModelObject">
+		<value name="id" field="id" style="attribute" />
+		<value name="description" field="description" />
+	</mapping>
+</binding>
