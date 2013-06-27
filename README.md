@@ -1,5 +1,7 @@
 A minimal test project for an apparent incompatibility found between Spring OXM 3.2.X and Spring Batch 2.x.
 
+See https://jira.springsource.org/browse/BATCH-2054 for more details.
+
 See [BUILDING](BUILDING.md) and [RUNNING](RUNNING.md) for setup and execution details.
 
 The testOneObject case will pass with Spring OXM 3.1.x and 3.2.x.
