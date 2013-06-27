@@ -3,9 +3,9 @@ package org.springframework.batch.item.xml.stax;
 import javax.xml.stream.XMLEventWriter;
 import javax.xml.stream.XMLStreamException;
 
-public class DeferredCloseEventWriterWrapper extends AbstractEventWriterWrapper {
+public class NoCloseEventWriterWrapper extends AbstractEventWriterWrapper {
 
-	public DeferredCloseEventWriterWrapper(final XMLEventWriter wrappedEventWriter) {
+	public NoCloseEventWriterWrapper(final XMLEventWriter wrappedEventWriter) {
 		super(wrappedEventWriter);
 	}
 
@@ -13,10 +13,5 @@ public class DeferredCloseEventWriterWrapper extends AbstractEventWriterWrapper 
 	public void close() throws XMLStreamException {
 
 		// No-op.
-	}
-
-	public void deferredClose() throws XMLStreamException {
-
-		super.close();
 	}
 }
