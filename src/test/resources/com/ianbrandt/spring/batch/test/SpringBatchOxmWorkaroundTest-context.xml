@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- Same test as before... -->
+	<import resource="SpringBatchOxmTest-context.xml"/>
+
+	<!-- Except override to use this ItemWriter instead. -->
+	<bean id="itemWriter" class="com.ianbrandt.spring.batch.test.SpringOxmWorkaroundStaxEventItemWriter"
+		depends-on="setSystemProperties">
+		<property name="resource" ref="tempResource" />
+		<property name="rootTagName" value="testing" />
+		<property name="marshaller">
+			<bean class="org.springframework.oxm.jibx.JibxMarshaller">
+				<property name="targetClass"
+					value="com.ianbrandt.spring.batch.test.TestModelObject" />
+			</bean>
+		</property>
+	</bean>
+</beans>

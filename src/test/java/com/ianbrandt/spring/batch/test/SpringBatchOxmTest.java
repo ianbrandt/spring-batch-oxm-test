@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class SpringBatchOxmTest {
 
 	@Resource
-	private StaxEventItemWriter<TestModelObject> itemWriter;
+	protected StaxEventItemWriter<TestModelObject> itemWriter;
 
 	private List<TestModelObject> testModelObjects;
 
