@@ -16,7 +16,7 @@ public class SpringOxmWorkaroundStaxEventItemWriter<T> extends StaxEventItemWrit
 
 	private static final Log log = LogFactory.getLog(SpringOxmWorkaroundStaxEventItemWriter.class);
 
-	private DeferredCloseEventWriterWrapper deferedCloseEventWriterWrapper;
+	private DeferredCloseEventWriterWrapper deferredCloseEventWriterWrapper;
 
 	private Resource resource;
 
@@ -35,9 +35,9 @@ public class SpringOxmWorkaroundStaxEventItemWriter<T> extends StaxEventItemWrit
 
 		final XMLEventWriter xmlEventWriter = super.createXmlEventWriter(outputFactory, writer);
 
-		deferedCloseEventWriterWrapper = new DeferredCloseEventWriterWrapper(xmlEventWriter);
+		deferredCloseEventWriterWrapper = new DeferredCloseEventWriterWrapper(xmlEventWriter);
 
-		return deferedCloseEventWriterWrapper;
+		return deferredCloseEventWriterWrapper;
 	}
 
 	@Override
@@ -45,11 +45,11 @@ public class SpringOxmWorkaroundStaxEventItemWriter<T> extends StaxEventItemWrit
 
 		super.close();
 
-		if (deferedCloseEventWriterWrapper != null) {
+		if (deferredCloseEventWriterWrapper != null) {
 
 			try {
 
-				deferedCloseEventWriterWrapper.deferredClose();
+				deferredCloseEventWriterWrapper.deferredClose();
 
 			} catch (XMLStreamException e) {
 				log.error("Unable to close file resource: [" + resource + "] " + e);
